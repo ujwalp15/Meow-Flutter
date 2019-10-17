@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              "assets/background_cat.gif",
+              "assets/images/background_cat.gif",
               height: 350.0,
               width: 350.0,
             )
