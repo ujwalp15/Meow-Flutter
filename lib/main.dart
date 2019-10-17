@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -54,6 +55,23 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.black38,
+        color: Colors.black45,
+        buttonBackgroundColor: Colors.black54,
+        index: 2,
+        animationDuration: Duration(milliseconds: 300),
+        items: <Widget>[
+          Icon(Icons.category, size: 30),
+          Icon(Icons.camera_alt, size: 30),
+          Icon(Icons.home, size: 30),
+          Icon(Icons.star, size: 30),
+          Icon(Icons.person, size: 30),
+        ],
+        onTap: (index) {
+          //Handle button tap
+        },
+      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -82,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+
     );
   }
 }
