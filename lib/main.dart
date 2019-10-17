@@ -9,8 +9,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Meow',
       theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.grey,
+      ),
+      darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.grey,
       ),
       home: MyHomePage(title: 'Meow'),
     );
