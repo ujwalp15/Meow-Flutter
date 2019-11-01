@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:meow/screens/about_screen.dart';
 import 'package:meow/screens/breed_screen.dart';
 import 'package:meow/screens/disc_screen.dart';
 import 'package:meow/screens/main_screen.dart';
@@ -356,6 +357,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _pageIndex = 2;
   final DiscScreen _breedScreen = DiscScreen();
   final MainScreen _mainScreen = MainScreen();
+  final AboutScreen _aboutScreen = AboutScreen();
 
   Widget _showPage = new MainScreen();
 
@@ -366,6 +368,9 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case 2:
         return _mainScreen;
+        break;
+      case 4:
+        return _aboutScreen;
         break;
       default:
         return Container(
