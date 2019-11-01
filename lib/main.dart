@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:meow/screens/breed_screen.dart';
+import 'package:meow/screens/disc_screen.dart';
+import 'package:meow/screens/main_screen.dart';
 import 'package:meow/utilities/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      debugShowCheckedModeBanner: false,
       color: Colors.blue,
       home: new Intro(),
     );
@@ -355,17 +357,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _pageIndex = 2;
+  final DiscScreen _breedScreen = DiscScreen();
+  final MainScreen _mainScreen = MainScreen();
+
+  Widget _showPage = new MainScreen();
+
+  Widget _pageChooser(int page){
+    switch(page) {
+      case 0:
+        return _breedScreen;
+        break;
+      case 2:
+        return _mainScreen;
+        break;
+      default:
+        return Container(
+          child: new Center(
+            child: new Text(
+              'No page found',
+              style: new TextStyle(fontSize: 30),
+            ),
+          )
+        );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.black38,
         color: Colors.black45,
         buttonBackgroundColor: Colors.black54,
-        index: 2,
+        index: _pageIndex,
         height: 60,
         animationDuration: Duration(milliseconds: 300),
         items: <Widget>[
@@ -375,20 +400,15 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.star, size: 30),
           Icon(Icons.person, size: 30),
         ],
-        onTap: (index) {
-          //Handle button tap
+        onTap: (int index) {
+          setState(() {
+            _showPage = _pageChooser(index);
+          });
         },
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              "assets/images/background_cat.gif",
-              height: 350.0,
-              width: 350.0,
-            )
-          ],
+      body: Container(
+        child: Center(
+          child: _showPage,
         ),
       ),
     );
