@@ -31,9 +31,8 @@ class AboutScreen extends StatelessWidget {
         //   title: Text('View Changelog'),
         //   icon: Icon(Icons.view_list),
         // ),
-        MarkdownPageListTile(
-          filename: 'LICENSE.md',
-          title: Text('View License'),
+        LicensesPageListTile(
+          title: Text('View Licenses'),
           icon: Icon(Icons.description),
         ),
         MarkdownPageListTile(

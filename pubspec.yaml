@@ -49,6 +49,10 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - README.md
+    - CONTRIBUTING.md
+    - LICENSE
+    - CODE_OF_CONDUCT.md
 
   fonts:
     - family: Sans Serif
