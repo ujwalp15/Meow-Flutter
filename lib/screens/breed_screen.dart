@@ -14,8 +14,16 @@ class BreedScreen extends StatefulWidget {
 class _BreedScreenState extends State<BreedScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.grey,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      home: Scaffold(
+      // backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SingleChildScrollView(
@@ -30,7 +38,7 @@ class _BreedScreenState extends State<BreedScreen> {
                       top: 60.0,
                     ),
                     height: 520.0,
-                    color: Colors.black87,
+                    color: Theme.of(context).primaryColor,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -121,7 +129,6 @@ class _BreedScreenState extends State<BreedScreen> {
                 height: 400.0,
                 transform: Matrix4.translationValues(0.0, -20.0, 0.0),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Column(
@@ -139,7 +146,6 @@ class _BreedScreenState extends State<BreedScreen> {
                           Text(
                             'Description',
                             style: TextStyle(
-                              color: Colors.black87,
                               fontSize: 24.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -148,7 +154,6 @@ class _BreedScreenState extends State<BreedScreen> {
                           Text(
                             widget.breed.description,
                             style: TextStyle(
-                              color: Colors.black87,
                               fontSize: 16.0,
                             ),
                           ),
@@ -156,7 +161,6 @@ class _BreedScreenState extends State<BreedScreen> {
                           Text(
                             'Body:',
                             style: TextStyle(
-                              color: Colors.black87,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -165,13 +169,11 @@ class _BreedScreenState extends State<BreedScreen> {
                             widget.breed.body,
                             style: TextStyle(
                               fontSize: 16.0,
-                              color: Colors.black87,
                             ),
                           ),
                           Text(
                             'Color:',
                             style: TextStyle(
-                              color: Colors.black87,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -180,13 +182,11 @@ class _BreedScreenState extends State<BreedScreen> {
                             widget.breed.color,
                             style: TextStyle(
                               fontSize: 16.0,
-                              color: Colors.black87,
                             ),
                           ),
                           Text(
                             'Temperament:',
                             style: TextStyle(
-                              color: Colors.black87,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -195,7 +195,6 @@ class _BreedScreenState extends State<BreedScreen> {
                             widget.breed.temperament,
                             style: TextStyle(
                               fontSize: 16.0,
-                              color: Colors.black87,
                             ),
                           ),
                         ],
@@ -214,6 +213,7 @@ class _BreedScreenState extends State<BreedScreen> {
           ),
         ),
       ),
+    ),
     );
   }
 }

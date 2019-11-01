@@ -88,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Color(0xFF7B51D3),
+        color: isActive ? Colors.black : Colors.black45,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -96,23 +96,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.white,
+        accentColor: Colors.grey,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        accentColor: Colors.black12,
+      ),
+      home:Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                Color(0xFF3594DD),
-                Color(0xFF4563DB),
-                Color(0xFF5036D5),
-                Color(0xFF5B16D0),
-              ],
-            ),
-          ),
+          decoration: BoxDecoration(),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 40.0),
             child: Column(
@@ -128,7 +126,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Text(
                       'Skip',
                       style: TextStyle(
-                        color: Colors.white,
                         fontSize: 20.0,
                       ),
                     ),
@@ -279,14 +276,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 Text(
                                   'Next',
                                   style: TextStyle(
-                                    color: Colors.white,
                                     fontSize: 22.0,
                                   ),
                                 ),
                                 SizedBox(width: 10.0),
                                 Icon(
                                   Icons.arrow_forward,
-                                  color: Colors.white,
                                   size: 30.0,
                                 ),
                               ],
@@ -304,7 +299,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ? Container(
               height: 60.0,
               width: double.infinity,
-              color: Colors.white,
               child: GestureDetector(
                 onTap: () => Navigator.push(
                       context,
@@ -316,7 +310,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Text(
                       'Get started',
                       style: TextStyle(
-                        color: Color(0xFF5B16D0),
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -326,6 +319,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             )
           : Text(''),
+    ),
     );
   }
 }
@@ -337,10 +331,12 @@ class HomeScreen extends StatelessWidget {
       title: 'Meow',
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.grey,
+        primaryColor: Colors.white,
+        accentColor: Colors.grey,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        accentColor: Colors.black12,
       ),
       home: MyHomePage(title: 'Meow'),
     );
@@ -387,12 +383,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.black38,
-        color: Colors.black45,
-        buttonBackgroundColor: Colors.black54,
+        backgroundColor: Theme.of(context).accentColor,
+        color: Theme.of(context).primaryColor,
         index: _pageIndex,
         height: 60,
-        animationDuration: Duration(milliseconds: 300),
+        animationDuration: Duration(milliseconds: 200),
         items: <Widget>[
           Icon(Icons.category, size: 30),
           Icon(Icons.camera_alt, size: 30),

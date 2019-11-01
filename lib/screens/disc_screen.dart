@@ -10,14 +10,12 @@ class DiscScreen extends StatefulWidget {
 
 class _DiscScreenState extends State<DiscScreen>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
   PageController _pageController;
   int _selectedPage = 0;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0, length: 5, vsync: this);
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
 
@@ -52,7 +50,7 @@ class _DiscScreenState extends State<DiscScreen>
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                color: Colors.black87,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 30.0),
@@ -131,68 +129,74 @@ class _DiscScreenState extends State<DiscScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('Breeds'),
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.grey,
       ),
-      backgroundColor: Colors.black12,
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark,
-        child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 60.0),
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      home:Scaffold(
+        appBar: AppBar(
+            title: Text('Breeds'),
+        ),
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.dark,
+          child: ListView(
+            padding: EdgeInsets.symmetric(vertical: 60.0),
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
               ),
-            ),
-            SizedBox(height: 20.0),
-            Padding(
-              padding: EdgeInsets.only(left: 30.0),
-            ),
-            SizedBox(height: 20.0),
-            Container(
-              height: 500.0,
-              width: double.infinity,
-              child: PageView.builder(
-                controller: _pageController,
-                onPageChanged: (int index) {
-                  setState(() {
-                    _selectedPage = index;
-                  });
-                },
-                itemCount: breed.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _plantSelector(index);
-                },
+              SizedBox(height: 20.0),
+              Padding(
+                padding: EdgeInsets.only(left: 30.0),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Description',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.w600,
+              SizedBox(height: 20.0),
+              Container(
+                height: 500.0,
+                width: double.infinity,
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (int index) {
+                    setState(() {
+                      _selectedPage = index;
+                    });
+                  },
+                  itemCount: breed.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _plantSelector(index);
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Description',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    breed[_selectedPage].description,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
+                    SizedBox(height: 10.0),
+                    Text(
+                      breed[_selectedPage].description,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
