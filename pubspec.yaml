@@ -26,6 +26,7 @@ dependencies:
   curved_navigation_bar: ^0.3.1
   shared_preferences: ^0.5.4
   about: ^1.0.2
+  reviews_slider: ^1.0.4
 
 dev_dependencies:
   flutter_test:
