@@ -19,6 +19,12 @@ class _DiscScreenState extends State<DiscScreen>
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   _plantSelector(int index) {
     return AnimatedBuilder(
       animation: _pageController,

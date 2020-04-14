@@ -27,6 +27,8 @@ dependencies:
   shared_preferences: ^0.5.4
   about: ^1.0.2
   reviews_slider: ^1.0.4
+  tflite: any
+  image_picker: ^0.6.5
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/model/
     - README.md
     - CONTRIBUTING.md
     - LICENSE

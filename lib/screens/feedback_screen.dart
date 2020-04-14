@@ -16,6 +16,11 @@ class _FeedbackState extends State<FeedbackScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(

@@ -12,6 +12,12 @@ class BreedScreen extends StatefulWidget {
 }
 
 class _BreedScreenState extends State<BreedScreen> {
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
