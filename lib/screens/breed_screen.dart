@@ -28,8 +28,7 @@ class _BreedScreenState extends State<BreedScreen> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      home: Scaffold(
-      // backgroundColor: Colors.white,
+      home: Scaffold (
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SingleChildScrollView(
